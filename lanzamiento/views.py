@@ -91,7 +91,7 @@ def WelcomeView(request):
     
     script, div = components(p)
     
-    return render(request, 'lanzamiento/welcome.html',
+    return render(request, 'lanzamiento/index.html',
         {
             'resultado': resultado,
             'numero_intentos': numero_intentos,
