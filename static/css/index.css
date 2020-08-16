@@ -1,0 +1,25 @@
+body {
+    background-color: gainsboro;
+}
+
+span {
+    font-size: 60px;
+}
+
+h4 {
+    padding: 100px;
+    width: 100%;
+    border: 1px solid #000;
+}
+
+.navbar a{
+    font-size: 30px !important;
+}
+
+.bk-plot-wrapper table {
+    margin: 0 auto;
+}
+
+.graph{
+    border: 2px solid black;
+}

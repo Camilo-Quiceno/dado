@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
+
+    <script src="http://cdn.bokeh.org/bokeh/release/bokeh-2.1.1.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.bokeh.org/bokeh/release/bokeh-2.1.1.min.css">
+    {{ script | safe }}
+    <title>Dado APP</title>
+</head>
+
+<body>
+    <header class="sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: black;">
+            <a class="navbar-brand mx-auto">Welcome Dado APP</a>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-12 pt-5 pb-5">
+                    <span>🎲</span>
+                    <h1>Por favor presione el boton si quiere lanzar el dado!</h1>
+                </div>
+                <div class="col-6">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-outline-dark btn-lg" name="lanzar">Lanzar!</button>
+                    </form>
+                </div>
+                <div class="col-6">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-outline-dark btn-lg" name="reiniciar">Reiniciar</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="dado" id="dado">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-12 pt-5 pb-5">
+                    {% if resultado == 0 %}
+                    <span>🎲🎲</span>
+                    {% elif resultado == 1 %}
+                    <img src="{% static 'img/1.jpg' %}" alt="cada dado" width="150px" height="150px" />
+                    {% elif resultado == 2 %}
+                    <img src="{% static 'img/2.jpg' %}" alt="cada dado" width="150px"  height="150px"/>
+                    {% elif resultado == 3 %}
+                    <img src="{% static 'img/3.jpg' %}" alt="cada dado" width="150px" height="150px" />
+                    {% elif resultado == 4 %}
+                    <img src="{% static 'img/4.jpg' %}" alt="cada dado" width="150px" height="150px" />
+                    {% elif resultado == 5 %}
+                    <img src="{% static 'img/5.jpg' %}" alt="cada dado" width="150px" height="150px"/>
+                    {% elif resultado == 6 %}
+                    <img src="{% static 'img/6.jpg' %}" alt="cada dado" width="150px" height="150px" />
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="dado" id="dado">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-6 pt-4">
+                    <h3>Resultado: {{resultado}}</h3>
+                </div>
+                <div class="col-6 pt-4">
+                    <h3>Lanzamiento: {{numero_intentos}}</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="graficas" id="gaficas">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-12 pt-4 pb-4">
+                    <h1>Estadisticas</h1>
+                </div>
+            </div>
+            <div class="graph row text-center align_items">
+                <div class="col-12 pt-3 pb-3">
+                    <span>{{ div | safe }}</span>     
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
